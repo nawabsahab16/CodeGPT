@@ -2,7 +2,7 @@ import bot from './assets/bot.svg';
 import user from './assets/user.svg';
 
 const form = document.querySelector('form');
-const chatContainer = document.querySelector('#chat_container');
+const chatContainer = document.querySelector('#chat_container'); 
 
 let valoadInterval;
 
@@ -60,3 +60,22 @@ function chatStripe (isAi, value , uniqueId) {
     )
 }
 
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+
+    const data = new FormData(form);
+
+    // user's chatSTRIPE
+
+     chatContainer.innerHTML += chatStripe(false, data.get('prompt '));
+
+     form.reset(); 
+
+    const uniqueId = generateUniqueId ();
+    chatContainer.innerHTML += chatStripe (false ,data.get('prompt'));
+
+    
+
+
+} 
